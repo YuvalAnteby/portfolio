@@ -25,6 +25,27 @@ const Navbar = () => {
 
     }
 
+    // Styling for the buttons
+    const navButtonStyle = (item) => (
+        {
+            borderRadius: 2,
+            fontWeight: 'medium',
+            px: 2,
+            py: 1,
+            backdropFilter: item ? 'blur(6px)' : 'none',
+            color: 'text.primary',
+            backgroundColor: /* frost effect */
+                item ? 'rgba(255, 255, 255, 0.15)' : 'transparent',
+            boxShadow:
+                item ? '0 0 10px rgba(255, 255, 255, 0.1)' : 'none',
+            transition: 'all 0.2s ease-in-out',
+            '&:hover': {
+                backgroundColor:
+                    item ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0.05)',
+            },
+        }
+    )
+
     return (
         <Box
             sx={{
@@ -47,29 +68,7 @@ const Navbar = () => {
                         startIcon={item.icon}
                         component="nav"
                         variant={location.pathname === `/${item.path}` ? 'contained' : 'text'}
-                        color= 'inherit'
-                        sx={{
-                            borderRadius: 2,
-                            fontWeight: 'medium',
-                            px: 2,
-                            py: 1,
-                            backdropFilter: location.pathname === `/${item.path}` ? 'blur(6px)' : 'none',
-                            backgroundColor:
-                                location.pathname === `/${item.path}`
-                                    ? 'rgba(255, 255, 255, 0.15)' // subtle frosted effect
-                                    : 'transparent',
-                            boxShadow:
-                                location.pathname === `/${item.path}`
-                                    ? '0 0 10px rgba(255, 255, 255, 0.1)'
-                                    : 'none',
-                            transition: 'all 0.2s ease-in-out',
-                            '&:hover': {
-                                backgroundColor:
-                                    location.pathname === `/${item.path}`
-                                        ? 'rgba(255, 255, 255, 0.12)'
-                                        : 'rgba(255, 255, 255, 0.05)',
-                            },
-                        }}
+                        sx={navButtonStyle(location.pathname === `/${item.path}`)}
                         onClick={() => handleClick(item)}
                     >
                         {item.label}
