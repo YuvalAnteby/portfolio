@@ -1,6 +1,5 @@
 import React from "react";
-//import './About.css'
-//import me1 from "./img/me1.jpg";
+import Navbar from "../components/Navbar";
 
 
 function About() {
@@ -12,6 +11,7 @@ function About() {
 
     return (
         <div className="about component__space" id="About">
+            <Navbar/>
             <div className="container">
                 <div className="row">
                     <div className="col__2">

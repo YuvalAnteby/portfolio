@@ -13,9 +13,9 @@ function App() {
             <CssBaseline/> {/* Ensures background and text colors are applied globally */}
             <Routes>
                 <Route path="/" element={<Main/>}/>
-                <Route path="/About-Me" element={<About/>}/>
-                <Route path="/Projects" element={<Projects/>}/>
-                <Route path="/Experience" element={<Experience/>}/>
+                <Route path="/about-me" element={<About/>}/>
+                <Route path="/projects" element={<Projects/>}/>
+                <Route path="/experience" element={<Experience/>}/>
             </Routes>
         </ThemeProvider>
     )
