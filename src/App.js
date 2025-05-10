@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Route, Routes} from 'react-router-dom'; // install
+import {ThemeProvider, CssBaseline} from '@mui/material'; // install
+import Main from './pages/Main';
+import Navbar from './components/Navbar';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import Experience from './pages/Experience';
+import Contact from './components/Contact';
+import darkTheme from './darkTheme';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <ThemeProvider theme={darkTheme}>
+            <CssBaseline/> {/* Ensures background and text colors are applied globally */}
+            <Routes>
+                <Route path="/" element={<Main/>}/>
+            </Routes>
+        </ThemeProvider>
+    )
 }
 
 export default App;

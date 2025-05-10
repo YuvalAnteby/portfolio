@@ -5,9 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  background-color: #1b263b; {/* background of the entire page */}
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 }
