@@ -2,11 +2,9 @@ import React from 'react';
 import {Route, Routes} from 'react-router-dom'; // install
 import {ThemeProvider, CssBaseline} from '@mui/material'; // install
 import Main from './pages/Main';
-import Navbar from './components/Navbar';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Experience from './pages/Experience';
-import Contact from './components/Contact';
 import darkTheme from './darkTheme';
 
 function App() {
@@ -15,6 +13,9 @@ function App() {
             <CssBaseline/> {/* Ensures background and text colors are applied globally */}
             <Routes>
                 <Route path="/" element={<Main/>}/>
+                <Route path="/About-Me" element={<About/>}/>
+                <Route path="/Projects" element={<Projects/>}/>
+                <Route path="/Experience" element={<Experience/>}/>
             </Routes>
         </ThemeProvider>
     )
