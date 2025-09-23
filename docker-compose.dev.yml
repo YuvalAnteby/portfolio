@@ -13,8 +13,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/app:delegated               # mount source code for hot reload
-      - node_modules:/app/node_modules # keep the container's node modules
+      - .:/app # mount source code for hot reload
 
 volumes:
   node_modules:

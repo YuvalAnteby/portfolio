@@ -2,7 +2,7 @@
 FROM node:18-slim AS prep
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --include=dev
 
 # Copy the rest of the project files based on the prep image
 FROM prep AS dev
