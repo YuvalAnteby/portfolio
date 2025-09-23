@@ -2,6 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://YuvalAnteby.github.io/portfolio/",
   "dependencies": {
     "framer-motion": "^12.23.19",
     "lucide-react": "^0.544.0",
