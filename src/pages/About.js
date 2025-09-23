@@ -1,21 +1,21 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 
 
 function About() {
     // Up to Top Btn
-    window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function () {
         const upToTop = document.querySelector("a.bottom__to__top");
         upToTop.classList.toggle("active", window.scrollY > 0)
     });
 
     return (
+        /*
         <div className="about component__space" id="About">
             <Navbar/>
             <div className="container">
                 <div className="row">
                     <div className="col__2">
-                        {/*<img src={me1} alt="" className="about__img" />*/}
+
                     </div>
                     <div className="col__2">
                         <h1 className="about__heading">About me</h1>
@@ -46,7 +46,7 @@ function About() {
                     </div>
                 </div>
             </div>
-            {/* UP TO TOP BTN */}
+
             <div className="up__to__top__btn">
                 <a href="#Home" className="bottom__to__top">
                     <svg
@@ -65,6 +65,9 @@ function About() {
                 </a>
             </div>
         </div>
+    */
+        <>
+        </>
     );
 }
 
