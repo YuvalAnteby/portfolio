@@ -5,7 +5,7 @@ function About() {
     // Up to Top Btn
     window.addEventListener("scroll", function () {
         const upToTop = document.querySelector("a.bottom__to__top");
-        upToTop.classList.toggle("active", window.scrollY > 0)
+        upToTop.classList.toggle("active", window.scrollY > 0);
     });
 
     return (

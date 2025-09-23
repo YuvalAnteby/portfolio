@@ -13,7 +13,7 @@ function App() {
                 <Route path="/projects" element={<Projects/>}/>
                 <Route path="/experience" element={<Experience/>}/>
             </Routes>
-    )
+    );
 }
 
 export default App;
