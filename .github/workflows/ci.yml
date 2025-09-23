@@ -27,16 +27,16 @@ jobs:
           cache-dependency-path: ./package-lock.json
 
       - name: Install Dependencies
-        working-directory: portfolio
+        working-directory: .
         run: npm ci
 
       - name: Lint
-        working-directory: portfolio
+        working-directory: .
         run: |
           if npm run | grep -q "^  lint"; then npm run lint; else echo "No lint script"; fi
 
       - name: Build
-        working-directory: portfolio
+        working-directory: .
         run: npm run build
 
       - name: Upload build artifact
