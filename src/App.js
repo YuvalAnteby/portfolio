@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, Routes} from 'react-router-dom';
 import Main from './pages/Main';
 import About from './pages/About';
-import Projects from './pages/Projects';
+import {Projects} from './pages/Projects';
 import Experience from './pages/Experience';
 import {MainLayout} from "./layout/MainLayout";
 
