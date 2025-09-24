@@ -1,1 +1,0 @@
-Full-Stack Developer & Computer Science Student

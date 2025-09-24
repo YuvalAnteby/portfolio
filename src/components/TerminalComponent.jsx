@@ -3,7 +3,7 @@ import {useTypingEffect} from "../hooks/useTypingEffect";
 import {FastForward} from 'lucide-react';
 import {motion, AnimatePresence} from 'framer-motion';
 
-export const SubHeader = () => {
+export const TerminalComponent = ({mdFilePath}) => {
     const [aboutContent, setAboutContent] = useState('');
     const {displayedContent, setIsTyping, setDisplayedContent} = useTypingEffect(aboutContent);
     const [showSkipButton, setShowSkipButton] = useState(false);
@@ -11,7 +11,7 @@ export const SubHeader = () => {
     useEffect(() => {
         const fetchAboutMe = async () => {
             try {
-                const response = await fetch('/sub-header.md');
+                const response = await fetch(mdFilePath);
                 const text = await response.text();
                 setAboutContent(text);
             } catch (error) {
