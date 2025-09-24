@@ -32,7 +32,7 @@ const Main = () => {
                     <div
                         className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-cyan-300/60 relative">
                         <img
-                            src={`portfolio/profile.jpg`}
+                            src={`/portfolio/profile.jpg`}
                             alt={personalInfo.name}
                             className="w-full h-full object-cover"
                         />
