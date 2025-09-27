@@ -1,26 +1,28 @@
 import React from 'react';
 import {motion} from 'framer-motion';
 import {personalInfo} from "../content/personalInfo";
-import {Linkedin, FolderGit2, Mail, Terminal, Github} from "lucide-react";
+import {Linkedin, FolderGit2, Terminal, Github} from "lucide-react";
 import {Link} from "react-router-dom";
 import {social} from "../content/socials";
 import {TechStack} from "../components/TechStack";
+import {ContactMenu} from "../components/ContactMenu";
 
 const Main = () => {
 
     return (
         <div className={
-            "relative rounded-xl bg-black/10 overflow-hidden backdrop-blur-sm " + // sizing
-             "before:absolute before:inset-0 before:bg-gradient-to-br " + // placement
-             "before:from-blue-500/10 before:via-indigo-500/15 before:to-cyan-500/10 " + // coloring
-             "before:duration-500 before:blur-xl before:opacity-100 group"  // animation
+            "relative rounded-xl bg-black/10 overflow-visible backdrop-blur-sm " + // was overflow-hidden
+            "before:absolute before:inset-0 before:bg-gradient-to-br " +
+            "before:from-blue-500/10 before:via-indigo-500/15 before:to-cyan-500/10 " +
+            "before:duration-500 before:blur-xl before:opacity-100 group"
         }>
             <motion.div
                 key="home"
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
                 transition={{duration: 0.4}}
-                className="relative z-10 min-h-[calc(100vh-6rem)] mx-auto max-w-3xl px-4 flex flex-col items-center justify-center text-center"
+                className="relative z-10 min-h-[calc(100dvh-4rem)] px-4 py-6 flex flex-col items-center
+                justify-center text-center"
             >
                 <motion.div
                     className="pt-2 mb-4 relative"
@@ -91,20 +93,7 @@ const Main = () => {
                     </Link>
 
                     {/* Secondary: Contact Me */}
-                    <a
-                        href={social.email}
-                        aria-label="Contact me by email"
-                        className={
-                            "inline-flex items-center gap-2 rounded-xl px-5 py-3 md:px-6 md:py-3.5 font-medium " + // placement
-                            "ring-1 ring-cyan-400/40 text-cyan-300 " + // coloring
-                            "bg-white/5 hover:bg-white/10 backdrop-blur " + // hover
-                            "focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 " + // focus
-                            "transition" // animation
-                        }
-                    >
-                        <Mail className="h-5 w-5"/>
-                        Contact Me
-                    </a>
+                    <ContactMenu/>
                 </motion.div>
 
                 {/* CV file - not in use now */}
