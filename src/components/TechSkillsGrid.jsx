@@ -53,14 +53,15 @@ export const TechSkillsGrid = ({extendedStack}) => {
 
                             {/* Skills Row */}
                             <div className="
-                                -mx-6 px-6              /* edge-to-edge swipe on mobile */
-                                overflow-x-auto         /* enable horizontal scroll */
+                                -mx-6 px-6                          /* edge-to-edge swipe on mobile */
+                                overflow-x-auto md:overflow-visible /* enable horizontal scroll */
                                 overscroll-x-contain
-                                snap-x snap-mandatory   /* snap to each card */
-                                flex gap-2             /* horizontal layout */
+                                snap-x snap-mandatory               /* snap to each card */
+                                flex gap-2                          /* horizontal layout */
                                 md:mx-0 md:px-0
                                 md:grid md:grid-cols-4 md:gap-5
-                                lg:grid-cols-5 xl:grid-cols-6">
+                                lg:grid-cols-5 xl:grid-cols-6"
+                                 >
                                 {category.stack.map((skill, skillIndex) => (
                                     <TechSkillCard
                                         key={skill.name}
