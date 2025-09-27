@@ -1,10 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { TechSkillCard } from './TechSkillCard';
+import {motion} from 'framer-motion';
+import {TechSkillCard} from './TechSkillCard';
 
-export const TechSkillsGrid = ({ extendedStack }) => {
+export const TechSkillsGrid = ({extendedStack}) => {
     const containerVariants = {
-        hidden: { opacity: 0, y: 50 },
+        hidden: {opacity: 0, y: 50},
         visible: {
             opacity: 1,
             y: 0,
@@ -16,11 +16,11 @@ export const TechSkillsGrid = ({ extendedStack }) => {
     };
 
     const categoryVariants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: {opacity: 0, y: 20},
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.5 }
+            transition: {duration: 0.5}
         }
     };
 
@@ -52,7 +52,15 @@ export const TechSkillsGrid = ({ extendedStack }) => {
                             </div>
 
                             {/* Skills Row */}
-                            <div className="flex flex-wrap gap-4 justify-start">
+                            <div className="
+                                -mx-6 px-6              /* edge-to-edge swipe on mobile */
+                                overflow-x-auto         /* enable horizontal scroll */
+                                overscroll-x-contain
+                                snap-x snap-mandatory   /* snap to each card */
+                                flex gap-2             /* horizontal layout */
+                                md:mx-0 md:px-0
+                                md:grid md:grid-cols-4 md:gap-5
+                                lg:grid-cols-5 xl:grid-cols-6">
                                 {category.stack.map((skill, skillIndex) => (
                                     <TechSkillCard
                                         key={skill.name}
