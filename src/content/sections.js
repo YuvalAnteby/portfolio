@@ -1,16 +1,19 @@
-//import {BookOpen, Code} from "lucide-react";
+import {Home, BookOpen, Code} from "lucide-react";
 
 export const sections = {
-    //about: {
-    //    icon: BookOpen,
-    //    title: 'About Me',
-    //    path: '/about-me',
-    //},
-    //projects: {
-    //    icon: Code,
-    //    title: 'Projects',
-    //    path: '/projects',
-    //},
-    // Remove or add a route before enabling:
-    // blog: { icon: BookOpen, title: 'Blog', path: '/blog' },
+    home: {
+        icon: Home,
+        title: "Home",
+        path: '/',
+    },
+    about: {
+        icon: BookOpen,
+        title: 'About Me',
+        path: '/aboutme',
+    },
+    projects: {
+        icon: Code,
+        title: 'Projects',
+        path: '/projects',
+    },
 };
