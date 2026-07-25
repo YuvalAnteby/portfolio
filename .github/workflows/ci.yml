@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ staging ]
 
 
 permissions:
@@ -40,6 +40,7 @@ jobs:
         run: npm run build
 
       - name: Upload build artifact
+        if: github.event_name == 'push'
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
