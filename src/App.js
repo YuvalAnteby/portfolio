@@ -42,7 +42,6 @@ const Portfolio = () => {
             className="scroll-mt-24 my-14 md:my-20 mx-2 md:mx-6 rounded-2xl bg-cyan-400 px-6 py-14 md:px-12 md:py-20 text-cyan-950"
         >
             <div className="max-w-3xl">
-                <p className="font-mono text-sm font-semibold">Ready when you are.</p>
                 <h2 className="mt-3 text-4xl md:text-6xl font-bold tracking-[-0.03em]">
                     Let&apos;s build something useful.
                 </h2>
