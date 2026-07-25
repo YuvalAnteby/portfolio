@@ -2,7 +2,6 @@ import React from 'react';
 import {motion} from 'framer-motion';
 import {personalInfo} from "../content/personalInfo";
 import {Linkedin, FolderGit2, Terminal, Github} from "lucide-react";
-import {Link} from "react-router-dom";
 import {social} from "../content/socials";
 import {TechStack} from "../components/TechStack";
 import {ContactMenu} from "../components/ContactMenu";
@@ -11,10 +10,10 @@ const Main = () => {
 
     return (
         <div className={
-            "relative rounded-xl bg-black/10 overflow-visible backdrop-blur-sm " + // was overflow-hidden
+            "relative rounded-xl bg-black/10 overflow-visible " + // was overflow-hidden
             "before:absolute before:inset-0 before:bg-gradient-to-br " +
             "before:from-blue-500/10 before:via-indigo-500/15 before:to-cyan-500/10 " +
-            "before:duration-500 before:blur-xl before:opacity-100 group"
+            "before:opacity-100 group"
         }>
             <motion.div
                 key="home"
@@ -56,7 +55,7 @@ const Main = () => {
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
                     transition={{duration: 0.4}}
-                    className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-400 to-blue-600 bg-clip-text text-transparent leading-relaxed px-4 py-1"
+                    className="px-4 py-1 text-4xl font-bold leading-relaxed text-cyan-300 md:text-5xl"
                 >
                     {personalInfo.name}
                 </motion.h1>
@@ -64,7 +63,14 @@ const Main = () => {
                 {/* sub header - current roles*/}
                 <div className="w-full max-w-4xl mx-auto mt-2 md:mt-4 mb-4 md:mb-8">
                     <div className="text-center max-w-3xl mx-auto space-y-2 md:space-y-4 font-semibold text-2xl">
-                        <h2>{personalInfo.SubHeader}</h2>
+                        <h2 className="text-xl leading-snug md:text-2xl">
+                            {personalInfo.SubHeader.split('<br>').map((line) => (
+                                <span key={line} className="block">{line}</span>
+                            ))}
+                        </h2>
+                        <p className="text-base font-normal text-cyan-50/70 md:text-lg">
+                            Building products end to end, from architecture to deployment.
+                        </p>
                     </div>
                 </div>
 
@@ -76,8 +82,8 @@ const Main = () => {
                     className="mt-4 md:mt-6 flex items-center gap-3 md:gap-4"
                 >
                     {/* Primary: View Projects */}
-                    <Link
-                        to="/projects"
+                    <a
+                        href="#projects"
                         aria-label="View my projects"
                         className={
                             "group inline-flex items-center gap-2 rounded-xl px-5 py-3 md:px-6 md:py-3.5 " + // placement
@@ -90,7 +96,7 @@ const Main = () => {
                     >
                         <FolderGit2 className="h-5 w-5"/>
                         View Projects
-                    </Link>
+                    </a>
 
                     {/* Secondary: Contact Me */}
                     <ContactMenu/>
@@ -124,7 +130,7 @@ const Main = () => {
                         href={social.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-cyan-300/85 hover:text-cyan-200 transition">
+                        className="inline-flex min-h-11 items-center gap-2 px-2 text-cyan-300/85 hover:text-cyan-200 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
                         <Github className="h-5 w-5"/>
                         <span className="text-sm">GitHub</span>
                     </a>
@@ -132,7 +138,7 @@ const Main = () => {
                         href={social.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-cyan-300/85 hover:text-cyan-200 transition">
+                        className="inline-flex min-h-11 items-center gap-2 px-2 text-cyan-300/85 hover:text-cyan-200 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
                         <Linkedin className="h-5 w-5"/>
                         <span className="text-sm">LinkedIn</span>
                     </a>

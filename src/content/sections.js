@@ -1,19 +1,24 @@
-import {Home, BookOpen, Code} from "lucide-react";
+import {Home, BookOpen, Code, Mail} from "lucide-react";
 
 export const sections = {
     home: {
         icon: Home,
         title: "Home",
-        path: '/',
-    },
-    about: {
-        icon: BookOpen,
-        title: 'About Me',
-        path: '/aboutme',
+        path: '#home',
     },
     projects: {
         icon: Code,
         title: 'Projects',
-        path: '/projects',
+        path: '#projects',
+    },
+    about: {
+        icon: BookOpen,
+        title: 'About Me',
+        path: '#about',
+    },
+    contact: {
+        icon: Mail,
+        title: 'Contact',
+        path: '#contact',
     },
 };
