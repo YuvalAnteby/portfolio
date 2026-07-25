@@ -10,7 +10,10 @@ export const About = () => {
     const [isTypingTech, setIsTypingTech] = useState(false);
 
     return (
-        <div>
+        <div className="px-4 md:px-6">
+            <div className="mb-10 max-w-2xl">
+                <h2 className="font-mono mt-3 text-3xl md:text-5xl font-bold tracking-[-0.03em] text-[#00FF33]">About Me</h2>
+            </div>
             <TerminalComponent
                 mdFilePath={'/portfolio/aboutme.md'}
                 commandText={'➜ YuvalAnteby.dev/aboutme ~ % cat aboutme.md '}

@@ -26,6 +26,7 @@ export const TerminalComponent = ({
         displayedContent: techDisplayed,
         isTyping: isTypingTech,
         setIsTyping: setIsTypingTech,
+        setDisplayedContent: setDisplayedTech,
     } = useTypingEffect(showTechSkills ? techContent : '');
 
     // shared UI
@@ -36,6 +37,7 @@ export const TerminalComponent = ({
         const fetchAboutMe = async () => {
             try {
                 const response = await fetch(mdFilePath);
+                if (!response.ok) throw new Error(`Unable to load ${mdFilePath}`);
                 const text = await response.text();
                 setAboutContent(text);
             } catch (error) {
@@ -46,18 +48,22 @@ export const TerminalComponent = ({
         fetchAboutMe();
     }, [mdFilePath]);
 
-    // show skip after a beat
     useEffect(() => {
-        const timer = setTimeout(() => setShowSkipButton(true), 2000);
+        if (!isTypingAbout && !isTypingTech) {
+            setShowSkipButton(false);
+            return;
+        }
+
+        const timer = setTimeout(() => setShowSkipButton(true), 800);
         return () => clearTimeout(timer);
-    }, []);
+    }, [isTypingAbout, isTypingTech]);
 
     // start typing the command, then show the skills
-    const handleShowTechSkills = async () => {
+    const handleToggleTechSkills = () => {
         if (!secondCommandText) return;
-        setTimeout(() => setTechContent(secondCommandOutputText), 150);
-        setShowTechSkills(true);
-
+        const nextValue = !showTechSkills;
+        setTechContent(nextValue ? secondCommandOutputText : '');
+        setShowTechSkills(nextValue);
     };
 
     // Skip typing for whichever is currently typing
@@ -68,6 +74,7 @@ export const TerminalComponent = ({
         }
         if (isTypingTech) {
             setIsTypingTech(false);
+            setDisplayedTech(techContent);
         }
         setShowSkipButton(false);
     };
@@ -127,7 +134,7 @@ export const TerminalComponent = ({
             {/* Buttons */}
             <div className="flex gap-4 mt-6">
                 <AnimatePresence>
-                    {showSkipButton && isTypingAbout && (
+                    {showSkipButton && (isTypingAbout || isTypingTech) && (
                         <motion.button
                             initial={{opacity: 0, y: 20}}
                             animate={{opacity: 1, y: 0}}
@@ -145,20 +152,20 @@ export const TerminalComponent = ({
                     )}
                 </AnimatePresence>
 
-                {/* Tech Skills Button - only show after about content is fully loaded and not already showing tech skills */}
-                {!isTypingAbout && !showTechSkills && (
+                {!isTypingAbout && (
                     <motion.button
                         initial={{opacity: 0, y: 20}}
                         animate={{opacity: 1, y: 0}}
                         whileHover={{scale: 1.05}}
                         whileTap={{scale: 0.95}}
-                        onClick={handleShowTechSkills}
+                        onClick={handleToggleTechSkills}
+                        aria-expanded={showTechSkills}
                         className="px-4 py-2 bg-blue-600 hover:bg-blue-500
                      rounded-full flex items-center gap-2 text-white shadow-lg
                      hover:shadow-blue-400/40 transition-all duration-300"
                     >
                         <Terminal className="w-4 h-4"/>
-                        <span>Show Tech Skills</span>
+                        <span>{showTechSkills ? 'Hide Tech Skills' : 'Show Tech Skills'}</span>
                     </motion.button>
                 )}
             </div>

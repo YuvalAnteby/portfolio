@@ -2,10 +2,10 @@ export const personalInfo = {
     "name": "Yuval Anteby",
     "email": "yuvalanteby.dev@gmail.com",
     "profileImageAlt": "Yuval Anteby",
-    "SubHeader": "Full-Stack Developer"
+    "SubHeader": `Full-Stack Developer at Rafael<br>Computer Science student at Bar-Ilan University`
 };
 
-export const techStack = ['TypeScript', 'Python', 'React', 'MongoDB', 'Node.js'];
+export const techStack = ['TypeScript', 'Node.js', 'PostgreSQL', 'Python', 'React'];
 
 export const extendedStack = [
     {
