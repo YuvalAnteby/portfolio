@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {fetchUserRepos} from "../content/GithubService";
+import {projectFallbacks} from "../content/projects";
 
 
 export const useGithubRepos = (username, limit = 6) => {
@@ -11,9 +12,10 @@ export const useGithubRepos = (username, limit = 6) => {
         const loadRepos = async () => {
             try {
                 const data = await fetchUserRepos(username, limit);
-                setRepos(data.filter(repo => !repo.fork).slice(0, limit));
+                setRepos(data);
             } catch (err) {
                 setError(err);
+                setRepos(projectFallbacks(username).slice(0, limit));
             } finally {
                 setLoading(false);
             }

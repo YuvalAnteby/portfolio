@@ -1,33 +1,34 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 
-export const useTypingEffect = (content, speed = 30) => {
+export const useTypingEffect = (content, speed = 8) => {
     const [displayedContent, setDisplayedContent] = useState('');
-    const [isTyping, setIsTyping] = useState(true);
+    const [isTyping, setIsTyping] = useState(false);
 
     useEffect(() => {
-        if (!content) {
-            setDisplayedContent('');
-            setIsTyping(true);
+        setDisplayedContent('');
+        setIsTyping(Boolean(content));
+    }, [content]);
+
+    useEffect(() => {
+        if (!content || !isTyping) return;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            setDisplayedContent(content);
+            setIsTyping(false);
             return;
         }
 
-        if (!isTyping) return;
+        if (displayedContent.length >= content.length) {
+            setIsTyping(false);
+            return;
+        }
 
-        let currentIndex = 0;
-        const textLength = content.length;
-
-        const typingInterval = setInterval(() => {
-            currentIndex++;
-            if (currentIndex <= textLength) {
-                setDisplayedContent(content.slice(0, currentIndex));
-            } else {
-                clearInterval(typingInterval);
-                setIsTyping(false);
-            }
+        const timer = setTimeout(() => {
+            setDisplayedContent(content.slice(0, displayedContent.length + 1));
         }, speed);
 
-        return () => clearInterval(typingInterval);
-    }, [content, isTyping, speed]);
+        return () => clearTimeout(timer);
+    }, [content, displayedContent, isTyping, speed]);
 
-    return { displayedContent, isTyping, setIsTyping, setDisplayedContent };
+    return {displayedContent, isTyping, setIsTyping, setDisplayedContent};
 };

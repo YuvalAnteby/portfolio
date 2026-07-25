@@ -1,80 +1,50 @@
 import React from 'react';
 import {motion} from 'framer-motion';
-import {TechSkillCard} from './TechSkillCard';
 
-export const TechSkillsGrid = ({extendedStack}) => {
-    const containerVariants = {
-        hidden: {opacity: 0, y: 50},
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.6,
-                staggerChildren: 0.2
-            }
-        }
-    };
+export const TechSkillsGrid = ({extendedStack}) => (
+    <motion.div
+        initial={{opacity: 0, y: 16}}
+        animate={{opacity: 1, y: 0}}
+        transition={{duration: 0.35}}
+        className="mx-auto mt-8 max-w-4xl border-y border-white/10"
+    >
+        {extendedStack.map((category) => category.stack?.length > 0 && (
+            <div
+                key={category.name}
+                className="grid gap-3 border-b border-white/10 px-2 py-5 last:border-b-0 sm:grid-cols-[12rem_1fr] sm:items-start sm:px-4"
+            >
+                <h3 className="font-mono text-sm font-semibold text-[#00FF33]">{category.name}</h3>
+                <div className="flex flex-wrap gap-x-5 gap-y-2">
+                    {category.stack.map((skill) => {
+                        const label = (
+                            <>
+                                {skill.icon && (
+                                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-white/90 p-0.5" aria-hidden="true">
+                                        <img src={skill.icon} alt="" loading="lazy" className="h-full w-full object-contain"/>
+                                    </span>
+                                )}
+                                <span>{skill.name}</span>
+                            </>
+                        );
 
-    const categoryVariants = {
-        hidden: {opacity: 0, y: 20},
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {duration: 0.5}
-        }
-    };
-
-    return (
-        <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-            className="max-w-6xl mx-auto mt-8 p-6"
-        >
-
-            {/* Categories */}
-            <div className="space-y-8">
-                {extendedStack.map((category, categoryIndex) => (
-                    // Only render categories that have skills
-                    category.stack && category.stack.length > 0 && (
-                        <motion.div
-                            key={category.name}
-                            variants={categoryVariants}
-                            className="space-y-4"
-                        >
-                            {/* Category Title */}
-                            <div className="flex items-center space-x-3">
-                                <span className="text-[#00FF33] text-lg font-mono">➜</span>
-                                <h3 className="text-xl font-semibold text-[#06b6d4] font-mono">
-                                    {category.name}
-                                </h3>
-                                <div className="flex-1 h-px bg-gradient-to-r from-gray-600 to-transparent"></div>
-                            </div>
-
-                            {/* Skills Row */}
-                            <div className="
-                                -mx-6 px-6                          /* edge-to-edge swipe on mobile */
-                                overflow-x-auto md:overflow-visible /* enable horizontal scroll */
-                                overscroll-x-contain
-                                snap-x snap-mandatory               /* snap to each card */
-                                flex gap-2                          /* horizontal layout */
-                                md:mx-0 md:px-0
-                                md:grid md:grid-cols-4 md:gap-5
-                                lg:grid-cols-5 xl:grid-cols-6"
-                                 >
-                                {category.stack.map((skill, skillIndex) => (
-                                    <TechSkillCard
-                                        key={skill.name}
-                                        skill={skill}
-                                        index={skillIndex}
-                                        categoryIndex={categoryIndex}
-                                    />
-                                ))}
-                            </div>
-                        </motion.div>
-                    )
-                ))}
+                        return skill.url ? (
+                            <a
+                                key={skill.name}
+                                href={skill.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex min-h-11 items-center gap-2 text-sm text-cyan-100 underline decoration-cyan-400/40 underline-offset-4 transition hover:text-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                            >
+                                {label}
+                            </a>
+                        ) : (
+                            <span key={skill.name} className="inline-flex min-h-11 items-center gap-2 text-sm text-cyan-50/70">
+                                {label}
+                            </span>
+                        );
+                    })}
+                </div>
             </div>
-        </motion.div>
-    );
-};
+        ))}
+    </motion.div>
+);
