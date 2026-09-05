@@ -68,9 +68,6 @@ const Main = () => {
                                 <span key={line} className="block">{line}</span>
                             ))}
                         </h2>
-                        <p className="text-base font-normal text-cyan-50/70 md:text-lg">
-                            Building products end to end, from architecture to deployment.
-                        </p>
                     </div>
                 </div>
 
