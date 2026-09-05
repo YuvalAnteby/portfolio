@@ -4,7 +4,7 @@ import React from "react";
 
 export const ProjectCard = ({repo, index}) => {
     const hasHomepage = Boolean(repo.homepage?.trim());
-    const topics = Array.isArray(repo.topics) ? repo.topics.slice(0, 3) : [];
+    const topics = Array.isArray(repo.topics) ? repo.topics.slice(0, 4) : [];
     const updated = repo.updated_at
         ? new Date(repo.updated_at).toLocaleDateString(undefined, {year: "numeric", month: "short"})
         : "";
