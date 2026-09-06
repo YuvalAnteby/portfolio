@@ -22,8 +22,13 @@ export const ProjectCard = ({repo, index}) => {
             <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-teal-500/15 to-blue-600/10 opacity-90 transition duration-300 group-hover:scale-[1.02] group-hover:opacity-100"/>
 
             <div className="relative flex min-h-[260px] w-full flex-col rounded-xl border border-white/10 bg-slate-950/90 p-5 md:p-6">
-                <p className="font-mono text-xs text-[#00FF33]">repo/{repo.repoName || repo.name}</p>
-                <h3 className="mt-2 text-xl font-semibold leading-tight text-white md:text-2xl">{name}</h3>
+                <div className="flex items-center gap-3">
+                    {repo.icon && <img src={repo.icon} alt="" width={40} height={40} className="h-10 w-10 shrink-0 object-contain"/>}
+                    <div className="min-w-0 break-words">
+                        <p className="font-mono text-xs text-[#00FF33]">repo/{repo.repoName || repo.name}</p>
+                        <h3 className="mt-0.5 text-xl font-semibold leading-tight text-white md:text-2xl">{name}</h3>
+                    </div>
+                </div>
                 <p className="mt-3 flex-grow text-sm leading-6 text-cyan-50/70">
                     {repo.description || "Project details are available on GitHub."}
                 </p>
