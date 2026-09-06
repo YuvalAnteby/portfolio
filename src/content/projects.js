@@ -1,8 +1,8 @@
 export const curatedProjects = [
     {
-        repoName: 'Paze',
+        repoName: 'Paze-Showcase',
         displayName: 'Paze',
-        description: 'Parallel Waze simulation built with Go, WebSockets, React, and Canvas.',
+        description: 'Parallel GPS simulation built with Go, WebSockets, React, and Canvas.',
     },
     {
         repoName: 'Can-I-Run-It',
